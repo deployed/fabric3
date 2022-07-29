@@ -9,7 +9,6 @@ The other callables defined in this module are internal only. Anything useful
 to individuals leveraging Fabric as a library, should be kept elsewhere.
 """
 import getpass
-from collections import Mapping
 import inspect
 from optparse import OptionParser
 import os
@@ -32,6 +31,11 @@ try:
     reduce
 except NameError:
     from functools import reduce
+
+try:
+    from collections import Mapping
+except ImportError:
+    from collections.abc import Mapping
 
 # One-time calculation of "all internal callables" to avoid doing this on every
 # check of a given fabfile callable (in is_classic_task()).
