@@ -1,5 +1,4 @@
 import copy
-from collections import Mapping
 from functools import partial
 import six
 import os.path
@@ -18,6 +17,11 @@ from fabric.tasks import Task, WrappedCallableTask
 from fabric.task_utils import _crawl, crawl, merge
 
 from utils import FabricTest, fabfile, path_prefix, aborts
+
+try:
+    from collections import Mapping
+except ImportError:
+    from collections.abc import Mapping
 
 
 # Stupid load_fabfile wrapper to hide newly added return value.
